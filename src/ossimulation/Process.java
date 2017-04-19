@@ -6,7 +6,10 @@ A toString method is availabe
 */
 package ossimulation;
 
-public class Process
+import java.util.Comparator;
+
+
+public class Process   
 {
    private static int NEXT_ID = 0;
    
@@ -61,6 +64,10 @@ public class Process
     public String toString()
     {
         return name+ " Process , Processes ID = " + id + "\tcycles remaining=" + cycles +'\n';
-    }
+    } 
+
+
+	
+
     
 }
