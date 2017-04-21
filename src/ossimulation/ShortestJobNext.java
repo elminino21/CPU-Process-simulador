@@ -9,7 +9,7 @@ public class ShortestJobNext<T> extends LinkedQueue<T> implements ProcessSchedul
 	ShortestQueue<Process> q;
 	Process processToRun;
 
-	public ShortestJobNext(T t)
+	public ShortestJobNext()
 	{
 		this.q = new ShortestQueue<Process>();
 	}

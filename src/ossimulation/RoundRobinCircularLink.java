@@ -3,28 +3,23 @@ package ossimulation;
 import Support.LLNode;
 import Support.LinkedQueue;
 
-public class RoundRobinCircularLink<T> extends LinkedQueue<T>
+public class RoundRobinCircularLink<T> extends LinkedQueue<Process>
 {
 	
+
+
 	@Override
-	public T dequeue()
+	public void enqueue(Process element)
 	{
-
-
-
-		return null;
-	}
-
-
-	@Override
-	public void enqueue(T element)
-	{ 
+		
+		if( element.getCycles() > 0  )
 		this.insertAtEnd(element);
 	}   
 
+	
 
-	/* Function to insert element at end */
-	public void insertAtEnd(T element)
+	
+	public void insertAtEnd(Process element)
 	{
 		LLNode nptr = new LLNode(element);    
 		nptr.setLink(front);
@@ -43,7 +38,7 @@ public class RoundRobinCircularLink<T> extends LinkedQueue<T>
 	}
 
 
-	/* Function to delete element at position */
+	
 	public void deleteAtPos(int pos)
 	{    
 		if (numElements == 1 && pos == 1)

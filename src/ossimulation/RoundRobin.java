@@ -2,14 +2,15 @@ package ossimulation;
 
 import Support.LinkedQueue;
 
-public class RoundRobin<T> extends LinkedQueue<T> implements ProcessScheduler {
+public class RoundRobin extends LinkedQueue<Process> implements ProcessScheduler {
 
 	
-
+	private RoundRobinCircularLink <Process> q;
+	private Process processToRun;
 	
-	public RoundRobin(T t)
+	public RoundRobin()
 	{
-		this.q = new ShortestQueue<Process>();
+		this.q = new RoundRobinCircularLink<Process>();
 	}
 	
 	
@@ -21,14 +22,9 @@ public class RoundRobin<T> extends LinkedQueue<T> implements ProcessScheduler {
                //if so, then make an idle process that runs for a cycle
                processToRun = new Process("Idle", 1);
         }
-        else if(processToRun == null || processToRun.getCycles() <=0)
-        {
-            //noting was running or it is done, a new process is needed
-           processToRun = q.dequeue();
-        }
         else
         {
-            //continue to run the process that was running
+        	processToRun = q.dequeue();
         }
         System.out.println("ProcessToRun: "+processToRun);
         
@@ -40,11 +36,6 @@ public class RoundRobin<T> extends LinkedQueue<T> implements ProcessScheduler {
 	        q.enqueue(p);
 
 	}
-	
-	
-	
-	
-	
 	
 
     
