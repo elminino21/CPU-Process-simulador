@@ -1,27 +1,45 @@
 package ossimulation;
 
-import Support.ArrayListStack;
 import Support.LLNode;
 import Support.LinkedQueue;
 
 public class ShortestJobNext<T> extends LinkedQueue<T> implements ProcessScheduler
 {
 	
-	LinkedQueue<Process> q;
+	ShortestQueue<Process> q;
 	Process processToRun;
 
 	public ShortestJobNext(T t)
 	{
-		this.q = new LinkedQueue<Process>();
+		this.q = new ShortestQueue<Process>();
 	}
 	
+	
+	
 	public Process getProcessToRun() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(q.isEmpty() && (processToRun == null || processToRun.getCycles() <=0)) 
+        {
+               //if so, then make an idle process that runs for a cycle
+               processToRun = new Process("Idle", 1);
+        }
+        else if(processToRun == null || processToRun.getCycles() <=0)
+        {
+            //noting was running or it is done, a new process is needed
+           processToRun = q.dequeue();
+        }
+        else
+        {
+            //continue to run the process that was running
+        }
+        System.out.println("ProcessToRun: "+processToRun);
+        
+       return processToRun;
 	}
 
 	public void scheduleProcess(Process p) {
-		// TODO Auto-generated method stub
+		 System.out.println("Scheduling PID "+p.getId());
+	        q.enqueue(p);
 
 	}
 	

@@ -5,10 +5,10 @@ package ossimulation;
 import Support.LLNode;
 import Support.LinkedQueue;
 
-public class ShortestQueue<T> extends LinkedQueue
+public class ShortestQueue<T> extends LinkedQueue<T>
 {
 	 /**
-	  * insert a node(process) on  list by 
+	  * insert a node(process) on  list by cycles
 	  * @param generic element
 	  */
 	public void sortedQueue(T element)
