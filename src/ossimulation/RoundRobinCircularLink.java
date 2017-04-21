@@ -38,7 +38,10 @@ public class RoundRobinCircularLink<T> extends LinkedQueue<Process>
 	}
 
 
-	
+	/**
+	 * my implementation on this method kept on being bugging used help online from avaries sources to solve the problem for this particular methd. 
+	 * @param pos
+	 */
 	public void deleteAtPos(int pos)
 	{    
 		if (numElements == 1 && pos == 1)
